@@ -6,7 +6,7 @@
  *
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    1.0 RC
+ * @version    1.1 RC
  * @license	 http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnLoadWebDocument
  * @internal    @installset base
@@ -15,10 +15,9 @@
  */
 
 /*
-### ResponsiveImages Plugin for MODX Evolution ###
-Adds responsive class to modx content images (tinymce images)
+###ResponsiveImages Plugin for MODX Evolution###
 Written By Nicola Lambathakis: http://www.tattoocms.it
-Version 1.0 RC
+Version 1.1 RC
 Events: OnLoadWebDocument
 
  */
@@ -35,6 +34,8 @@ case "OnLoadWebDocument" :
 
 		// assets images (content)
 	$modx->documentObject['content'] = str_replace(' src="'.$ImagesFolder.'',' class="'.$ResponsiveClass.'" src="'.$ImagesFolder.'',$modx->documentObject['content']);
+		// lazy load images (content)
+	$modx->documentObject['content'] = str_replace(' data-src="'.$ImagesFolder.'',' class="'.$ResponsiveClass.'" data-src="'.$ImagesFolder.'',$modx->documentObject['content']);
 		break;
 
        return; // stop.
